@@ -1,0 +1,130 @@
+header.header-container{
+  display: flex;
+  padding: 20px 5%;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+nav.nav-bar{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+
+nav img{
+  width: 120px;
+}
+
+.header-container{
+  height: 70px;
+  width: 100%;
+  /* background: rgb(192,191,209);
+background: linear-gradient(90deg, rgba(192,191,209,1) 0%, rgba(130,157,131,1) 48%, rgba(156,172,162,1) 84%, rgba(154,167,170,1) 100%); */
+  z-index: 1;
+  background-color: rgb(49, 46, 46);
+}
+.nav-bar a{
+  text-decoration: none;
+  margin-bottom: -8px;
+  padding: 0;
+}
+
+.search-box{
+  display: flex;
+  align-items: center;
+  width: 300px;
+  position: relative;
+  
+}
+
+.nav-links{
+  display: flex;
+}
+
+.nav-links li{
+  list-style: none;
+  margin-left: 25px;
+}
+
+.nav-links li a{
+  text-decoration: none;
+  color: white;
+}
+
+.search-box input{
+  padding: 6px 15px;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+}
+
+svg.search-icon{
+  position: absolute;
+  right: 15px;
+  color: black;
+}
+
+.header-sign{
+  display: flex;
+  align-items: center;
+}
+
+.header-sign .light-icon{
+  /* border: 1px solid white; */
+  font-size: larger;
+}
+
+.header-sign button{
+  margin-left: 20px;
+  background-color: transparent;
+  outline: none;
+  /* border: 2px solid rgb(59, 80, 81); */
+  border: 2px solid white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 8px 15px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-sign button:hover{
+  background-color: rgb(45, 168, 45);
+  border: 2px solid white;
+}
+
+.nav-links li .links{
+  position: relative;
+}
+
+.nav-links li .links::after{
+  content: '';
+  background-color: rgb(45, 168, 45);
+  width: 0;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: all 0.2s ease-in;
+}
+
+.nav-links li .links:hover::after{
+  width: 50%;
+}
+
+.nav-links li .actives::after{
+  content: '';
+  background-color: rgb(45, 168, 45);
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: all 0.2s ease-in;
+  width: 50%;
+
+}
+
