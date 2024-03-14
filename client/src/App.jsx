@@ -7,6 +7,7 @@ import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
 import Signups from './pages/Signups'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 
@@ -22,8 +23,8 @@ function App() {
         <Route path='/sign-in' element={<Signin />} />
         <Route path='/dashboard' element={<Dashboard />}/>
       </Routes>   
-    
-    
+      <Footer />
+
     </BrowserRouter>
     
   )

@@ -1,12 +1,16 @@
 :root{
   --green: rgb(45, 168, 45);
   --black: black;
+  --grey: rgb(49, 46, 46);
 }
 
 header.header-container{
+  position: sticky;
+  top: 0;
   display: flex;
   padding: 20px 5%;
   width: 100%;
+  z-index: 1;
   border-bottom: 2px solid black;
 }
 
@@ -29,7 +33,7 @@ nav img{
   /* background: rgb(192,191,209);
 background: linear-gradient(90deg, rgba(192,191,209,1) 0%, rgba(130,157,131,1) 48%, rgba(156,172,162,1) 84%, rgba(154,167,170,1) 100%); */
   z-index: 1;
-  background-color: rgb(49, 46, 46);
+  background-color: var(--grey);
 }
 .nav-bar a{
   text-decoration: none;
