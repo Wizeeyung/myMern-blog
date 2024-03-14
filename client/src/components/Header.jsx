@@ -1,4 +1,4 @@
-import logo from '../assets/logo2.png'
+import logo from '../assets/logowizwhite.png'
 import { IoSearch } from "react-icons/io5";
 import './css/header.css'
 import { MdLightMode } from "react-icons/md";
@@ -22,7 +22,7 @@ const Header = () => {
         </ul>
         <div className='header-sign'>
           <MdLightMode  className='light-icon'/>
-          <button className='sign-up'>Sign Up</button>
+          <Link to='/sign-up'><button className='sign-up'> Sign Up</button></Link>
         </div>
       </nav>
 

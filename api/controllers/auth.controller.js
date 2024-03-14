@@ -8,7 +8,7 @@ export const signup = async (req, res, next) =>{
 
   //if all of req.body properties are not present then give a message that all fields are required
   if(!username || !email || !password || username === '' || email === '' || password === ''){
-    // return res.status(400).json({message: 'All fields are required'})
+    // instead of return res.status(400).json({message: 'All fields are required'}) we can use the error handler function and the next
     next(errorHandler(400, 'All fields are required'))
   }
 

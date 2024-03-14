@@ -1,3 +1,8 @@
+:root{
+  --green: rgb(45, 168, 45);
+  --black: black;
+}
+
 header.header-container{
   display: flex;
   padding: 20px 5%;
@@ -78,6 +83,11 @@ svg.search-icon{
   font-size: larger;
 }
 
+.header-sign a {
+  color: white;
+  margin: 0;
+}
+
 .header-sign button{
   margin-left: 20px;
   background-color: transparent;
@@ -93,7 +103,7 @@ svg.search-icon{
 }
 
 .header-sign button:hover{
-  background-color: rgb(45, 168, 45);
+  background-color: var(--green);
   border: 2px solid white;
 }
 
@@ -103,7 +113,7 @@ svg.search-icon{
 
 .nav-links li .links::after{
   content: '';
-  background-color: rgb(45, 168, 45);
+  background-color: var(--green);
   width: 0;
   height: 4px;
   position: absolute;
@@ -118,7 +128,7 @@ svg.search-icon{
 
 .nav-links li .actives::after{
   content: '';
-  background-color: rgb(45, 168, 45);
+  background-color: var(--green);
   height: 4px;
   position: absolute;
   left: 0;
