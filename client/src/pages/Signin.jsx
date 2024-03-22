@@ -3,28 +3,36 @@ import logo from '../assets/logowizblack.png';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart, signInSuccess, signInFailure, signInStopError } from '../redux/user/userSlice';
 
 
 const Signin = () => {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {loading , error: errorMessage} = useSelector((state)=> state.user)
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value.trim()})
-    console.log(formData)
+    if(errorMessage){
+      dispatch(signInFailure(errorMessage))
+      dispatch(signInStopError())
+    }
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
 
     if(!formData.email || !formData.password){
-      return setErrorMessage('Please fill out all fields!!!')
+      return dispatch(signInFailure('Please fill out all fields!!!'))
     }
     try{
-      setLoading(true)
-      setErrorMessage(null)
+      // setLoading(true)
+      // setErrorMessage(null)
+      //try to use the signinstart reducer from redux to control the error and the loading instead
+      dispatch(signInStart())
+      //dont forget to add the server proxy to the vite.config.js file when the route is /api so it can switch to port 3000 when connecting to the backend
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
@@ -32,18 +40,21 @@ const Signin = () => {
       });
       const data = await res.json();
       if(data.success === false){
-        return setErrorMessage(data.message);
+        // setLoading(false);
+        // return setErrorMessage(data.message);
+        dispatch(signInFailure(data.message))
       }
-      setLoading(false);
+      
+
+      
       if(res.ok){
+        dispatch(signInSuccess(data))
         navigate('/')
       }
     }catch (error){
-      setLoading(false);  
-      setErrorMessage(error.message);
-        
-    }
+     dispatch(signInFailure(error.message))
   }
+}
 
   return (
     <div className='signup-container'>

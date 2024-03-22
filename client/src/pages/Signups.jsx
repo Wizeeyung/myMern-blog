@@ -13,7 +13,9 @@ const Signups = () => {
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value.trim()})
-    console.log(formData)
+    if(errorMessage){
+      setErrorMessage(null);
+    }
   };
 
   const handleSubmit = async(e) => {
@@ -32,6 +34,7 @@ const Signups = () => {
       });
       const data = await res.json();
       if(data.success === false){
+        setLoading(false);
         return setErrorMessage(data.message);
       }
       setLoading(false);
