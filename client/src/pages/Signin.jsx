@@ -1,10 +1,10 @@
 import '../components/css/signup.css';
 import logo from '../assets/logowizblack.png';
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure, signInStopError } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 
 const Signin = () => {
@@ -75,8 +75,8 @@ const Signin = () => {
           </div>
           {errorMessage && <p className='error-msg'>{errorMessage}</p>}
           <button className='signup-btn' type='submit' disabled={loading}>{loading ? 'Loading...' : 'Sign In'}</button>
-          <button className='signup-btn2'><FcGoogle /> Continue with google</button>
-         
+          <OAuth />
+
         </form>
         
         <p>Dont hava an account?  <Link to='/sign-up'>Sign up</Link></p>

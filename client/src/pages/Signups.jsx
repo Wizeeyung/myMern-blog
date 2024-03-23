@@ -3,6 +3,7 @@ import logo from '../assets/logowizblack.png';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import OAuth from '../components/OAuth';
 
 const Signups = () => {
 
@@ -71,7 +72,7 @@ const Signups = () => {
           </div>
           {errorMessage && <p className='error-msg'>{errorMessage}</p>}
           <button className='signup-btn' type='submit' disabled={loading}>{loading ? 'Loading...' : 'Sign Up'}</button>
-          <button className='signup-btn2'><FcGoogle /> Continue with google</button>
+          <OAuth />
          
         </form>
         
