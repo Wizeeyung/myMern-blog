@@ -3,13 +3,17 @@ import { IoSearch } from "react-icons/io5";
 import './css/header.css'
 import { MdLightMode } from "react-icons/md";
 import { Link, NavLink} from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { GiMoon } from "react-icons/gi";
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 const Header = () => {
 
+  const {theme} = useSelector((state) => state.theme);
   const {currentUser} = useSelector((state) => state.user)
   const [menu, setMenu] = useState(false)
+  const dispatch = useDispatch()
 
   const handleMenu = () =>{
     setMenu(!menu)
@@ -28,7 +32,11 @@ const Header = () => {
           <li><NavLink to='/projects' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Projects</NavLink></li>
         </ul>
         <div className='header-sign'>
-          <MdLightMode  className='light-icon'/>
+          {theme === 'light' ? 
+          <GiMoon  className='light-icon' onClick={()=> dispatch(toggleTheme())}/> :
+          <MdLightMode  className='light-icon' onClick={()=> dispatch(toggleTheme())}/>
+          }
+          
           {currentUser ? 
           (
           <div className='profile-picture' onClick={handleMenu}>

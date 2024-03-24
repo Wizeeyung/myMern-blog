@@ -3,10 +3,11 @@ import './css/signup.css'
 import {GoogleAuthProvider, signInWithPopup, getAuth} from 'firebase/auth'
 import { app } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { signInStart, signInSuccess } from "../redux/user/userSlice";
-import {  useDispatch } from "react-redux";
+import { signInSuccess } from "../redux/user/userSlice";
+import {  useDispatch, useSelector } from "react-redux";
 const OAuth = () => {
 
+  const {theme} = useSelector((state) => state.theme);
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const auth = getAuth(app)
@@ -39,7 +40,7 @@ const OAuth = () => {
   }
   return (
     <div>
-      <button className='signup-btn2' onClick={handleGoogleSubmit}><FcGoogle /> Continue with google</button>
+      <button className={theme === 'dark'? 'signup-btn2 black' : 'signup-btn2'} onClick={handleGoogleSubmit}><FcGoogle /> Continue with google</button>
     </div>
   )
 }

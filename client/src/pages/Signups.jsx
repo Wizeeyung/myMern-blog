@@ -1,16 +1,18 @@
 import '../components/css/signup.css';
 import logo from '../assets/logowizblack.png';
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import whiteLogo from '../assets/logowizwhite.png';
 import OAuth from '../components/OAuth';
+import { useSelector } from 'react-redux';
 
 const Signups = () => {
 
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {theme} = useSelector((state) => state.theme);
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value.trim()})
@@ -52,7 +54,7 @@ const Signups = () => {
   return (
     <div className='signup-container'>
       <div className='left-signup'>
-        <img src={logo} alt='logo' />
+      <img src={theme === 'dark' ? whiteLogo : logo} alt='logo' />
         <p>Welcome to Wiz Blog page. You can sign up with your email and password or with Google</p>
 
       </div>
@@ -71,12 +73,12 @@ const Signups = () => {
             <input type='password' id='password'  placeholder='Password' onChange={handleChange}/>
           </div>
           {errorMessage && <p className='error-msg'>{errorMessage}</p>}
-          <button className='signup-btn' type='submit' disabled={loading}>{loading ? 'Loading...' : 'Sign Up'}</button>
+          <button className={theme === 'dark'? 'signup-btn black' : 'signup-btn'} type='submit' disabled={loading}>{loading ? 'Loading...' : 'Sign Up'}</button>
           <OAuth />
          
         </form>
         
-        <p>Have an account?  <Link to='/sign-in'>Sign in</Link></p>
+        <p className={theme === 'dark'? 'signin-theme' : null}>Have an account?  <Link to='/sign-in'>Sign in</Link></p>
       </div>
 
     </div>

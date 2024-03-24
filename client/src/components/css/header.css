@@ -80,12 +80,13 @@ svg.search-icon{
 .header-sign{
   display: flex;
   align-items: center;
-  cursor: pointer;
+  
 }
 
 .header-sign .light-icon{
   /* border: 1px solid white; */
   font-size: larger;
+  cursor: pointer;
 }
 
 .header-sign a {
@@ -156,6 +157,7 @@ svg.search-icon{
   width: 100%;
   border-radius: 50%;
   line-height: 50%;
+  cursor: pointer;
 }
 
 .menu-container{
@@ -173,7 +175,7 @@ svg.search-icon{
   display: flex;
   flex-direction: column;
   padding-bottom: 5px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border-bottom: 1px solid white;
 }
 
@@ -185,8 +187,13 @@ svg.search-icon{
   margin: 0;
   padding-bottom: 5px;
   font-weight: bold;
-  margin-bottom: 20px;
+  padding: 10px;
   border-bottom: 1px solid white;
+  cursor: pointer;
+}
+
+.menu-container p:hover{
+  background-color: rgba(208, 201, 201, 0.8);
 }
 
 .menu-container p:nth-child(3){
