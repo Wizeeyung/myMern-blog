@@ -80,6 +80,7 @@ svg.search-icon{
 .header-sign{
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .header-sign .light-icon{
@@ -139,6 +140,57 @@ svg.search-icon{
   bottom: -6px;
   transition: all 0.2s ease-in;
   width: 50%;
+}
+
+.profile-picture{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.profile-picture img{
+  width: 100%;
+  border-radius: 50%;
+  line-height: 50%;
+}
+
+.menu-container{
+  background-color: rgba(128, 128, 128, 0.7);
+  position: absolute;
+  right: 0;
+  width: 300px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+  top: 50px;
+}
+
+.menu-name{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.menu-container span:nth-child(2){
+  font-weight: bold;
+}
+
+.menu-container p{
+  margin: 0;
+  padding-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.menu-container p:nth-child(3){
+  margin-bottom: 5px;
 
 }
 

@@ -3,10 +3,17 @@ import { IoSearch } from "react-icons/io5";
 import './css/header.css'
 import { MdLightMode } from "react-icons/md";
 import { Link, NavLink} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const Header = () => {
 
+  const {currentUser} = useSelector((state) => state.user)
+  const [menu, setMenu] = useState(false)
 
+  const handleMenu = () =>{
+    setMenu(!menu)
+  }
   return (
     <header className='header-container'>
       <nav className='nav-bar'>
@@ -22,7 +29,26 @@ const Header = () => {
         </ul>
         <div className='header-sign'>
           <MdLightMode  className='light-icon'/>
-          <Link to='/sign-up'><button className='sign-up'> Sign Up</button></Link>
+          {currentUser ? 
+          (
+          <div className='profile-picture' onClick={handleMenu}>
+            <img src={currentUser.profilePicture} alt='profile-picture' />
+            { menu &&
+               <div className='menu-container'>
+                <div className='menu-name'>
+                  <span>{currentUser.username}</span>
+                  <span>{currentUser.email}</span>
+                </div>
+                <Link to='/dashboard?tab=profile'><p>Profile</p></Link>
+                <p>SignOut</p>
+             </div>
+            }
+           
+          </div>
+          ) : 
+          <Link to='/sign-in'><button className='sign-up'> Sign In</button></Link>
+          }
+          
         </div>
       </nav>
 
