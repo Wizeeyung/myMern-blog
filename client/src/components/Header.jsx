@@ -40,7 +40,7 @@ const Header = () => {
           {currentUser ? 
           (
           <div className='profile-picture' onClick={handleMenu}>
-            <img src={currentUser.profilePicture} alt='profile-picture' />
+            <img src={currentUser?.profilePicture} alt='profile-picture' />
             { menu &&
                <div className='menu-container'>
                 <div className='menu-name'>
