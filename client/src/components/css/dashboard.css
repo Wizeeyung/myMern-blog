@@ -1,0 +1,153 @@
+:root{
+  --green: rgb(45, 168, 45);
+  --black: black;
+  --grey: rgb(49, 46, 46);
+}
+
+.dash-sidebar{
+  width: 100%;
+}
+
+.dash-profile{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+}
+
+.dash-profile .profile-pic-container{
+  height: 150px;
+  width: 150px;
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.dash-profile .profile-form{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.dash-profile .profile-form input{
+  margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid gray;
+  padding-left: 10px;
+}
+
+.dash-profile .profile-form-p{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.dash-profile .profile-form-p p{
+  color: red;
+  cursor: pointer;
+}
+
+.dash-profile .profile-form-p p:hover{
+  text-decoration: underline;
+}
+
+.dashboard-container{
+  width: 100%;
+  display: flex;
+}
+
+.dashboard-container .left-dashboard{
+  background-color: rgba(124, 117, 117, 0.1);
+  width: 15%;
+  padding: 10px;
+}
+
+.dashboard-container .right-dashboard{
+  width: 90%;
+}
+
+.dash-sidebar .profile{
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.dash-sidebar .profile.active{
+  background-color: rgba(113, 112, 112, 0.5);
+}
+
+.dash-sidebar .profile a.darks{
+  color: black;
+}
+
+.dash-sidebar .profile a{
+  text-decoration: none;
+  color: white;
+  
+}
+.dash-sidebar .profile p{
+  margin: 0;
+}
+
+.dash-sidebar .profile svg{
+  margin-right: 15px;
+}
+
+.dash-sidebar .profile span{
+  position: absolute;
+  right: 10px;
+  background-color: var(--green);
+  color: white;
+  padding: 3px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.dash-sidebar .profile-sign{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.dash-sidebar .profile-sign p{
+  margin: 0;
+}
+
+.dash-sidebar .profile-sign:hover{
+  background-color: rgba(113, 112, 112, 0.5);
+}
+
+.dash-sidebar .profile-sign svg{
+  margin-right: 15px;
+}
+
+.profile-form-btn{
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  background-color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-form-btn:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
