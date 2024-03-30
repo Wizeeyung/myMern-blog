@@ -5,6 +5,8 @@ import { useState } from 'react';
 import whiteLogo from '../assets/logowizwhite.png';
 import OAuth from '../components/OAuth';
 import { useSelector } from 'react-redux';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Signups = () => {
 
