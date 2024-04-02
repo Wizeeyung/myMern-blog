@@ -161,7 +161,7 @@ const DashProfile = () => {
           )}
           <img src={imageFileUrl || currentUser.profilePicture} />
         </div>
-        {imageFileUploadError ? <p>{imageFileUploadError}</p> : null}
+        {imageFileUploadError ? <p className="file-upload">{imageFileUploadError}</p> : null}
         <input type="text" id="username" placeholder="username" defaultValue={currentUser.username}  onChange={handleChange}/>
         <input type="email" id="email" placeholder="email" defaultValue={currentUser.email} onChange={handleChange}/>
         <input type="password" id="password" placeholder="password" onChange={handleChange}/>
@@ -172,8 +172,8 @@ const DashProfile = () => {
         <p>Sign Out</p>
       </div>
 
-      <p>{updateUserSuccess}</p>
-      <p>{updateUserError}</p>
+      <p className="update-success">{updateUserSuccess}</p>
+      <p className="update-error">{updateUserError}</p>
 
     </div>
   )

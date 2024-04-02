@@ -175,3 +175,30 @@
   background-color: white;
   color: black;
 }
+
+p.update-error{
+  background-color: rgb(243, 195, 195);
+  color: red;
+  padding: 5 10px;
+  font-size: 12px;
+  width: 40%;
+  text-align: center;
+}
+
+p.update-success{
+  background-color: rgb(199, 239, 199);
+  color: green;
+  padding: 5 10px;
+  font-size: 12px;
+  width: 40%;
+  text-align: center;
+}
+
+.file-upload{
+  background-color: rgb(241, 196, 196);
+  color: red;
+  padding: 5 10px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
