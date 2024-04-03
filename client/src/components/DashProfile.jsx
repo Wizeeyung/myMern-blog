@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage';
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { updateSuccess, updateStart, updateFailure } from "../redux/user/userSlice.js";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { updateSuccess, updateStart, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure} from "../redux/user/userSlice.js";
 
 
 
 const DashProfile = () => {
 
   const {theme} = useSelector((state)=> state.theme);
-  const {currentUser} = useSelector((state)=> state.user);
+  const {currentUser, error} = useSelector((state)=> state.user);
   const [imageFile , setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const filePickerRef = useRef();
@@ -21,8 +23,9 @@ const DashProfile = () => {
   const [imageFileUploading, setImageFileUploading] = useState(false);
   const [updateUserSuccess, setUpdateUserSuccess] =  useState(null)
   const [updateUserError, setUpdateUserError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  console.log(imageFileUploadProgress, imageFileUploadError)
+
 
   const handleImage = (e) =>{
     const file = e.target.files[0];
@@ -133,8 +136,28 @@ const DashProfile = () => {
       }
     )
   }
-  
-  // console.log(imageFile, imageFileUrl)
+
+  const handleDeleteUser = async () => {
+    setShowModal(false);
+
+    try{
+      dispatch(deleteUserStart());
+      const res = await fetch(`api/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await res.json();
+      if(!res.ok){
+        dispatch(deleteUserFailure(data.message));
+      }else{
+        dispatch(deleteUserSuccess(data));
+      }
+
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  }
+
   return (
     <div className="dash-profile">
       <h1>Profile</h1>
@@ -168,12 +191,29 @@ const DashProfile = () => {
         <button className={theme === 'dark' ? "profile-form-btn lights" : 'profile-form-btn'} type="submit">Update</button>
       </form>
       <div className="profile-form-p">
-        <p>Delete Account</p>
+        <p onClick={()=> setShowModal(true)}>Delete Account</p>
         <p>Sign Out</p>
       </div>
 
       <p className="update-success">{updateUserSuccess}</p>
       <p className="update-error">{updateUserError}</p>
+
+      {
+        showModal &&
+        <div className="delete-modal-container">
+        <div className="delete-modal">
+          <IoClose className="delete-cls-btn" onClick={()=> setShowModal(false)}/>
+          <IoMdInformationCircleOutline className="delete-info-btn"/>
+          <p className="delete-txt">Are you sure you want to delete <br /> your account?</p>
+          <div className="delete-btn-lnr">
+            <button className="delete-left-btn" onClick={handleDeleteUser}>Yes</button>
+            <button className="delete-right-btn" onClick={()=> setShowModal(false)}>No</button>
+
+          </div>
+        </div>
+      </div>
+      }
+      
 
     </div>
   )
