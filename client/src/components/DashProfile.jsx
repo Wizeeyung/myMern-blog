@@ -5,7 +5,7 @@ import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { updateSuccess, updateStart, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure} from "../redux/user/userSlice.js";
+import { updateSuccess, updateStart, updateFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutSuccess} from "../redux/user/userSlice.js";
 
 
 
@@ -156,7 +156,25 @@ const DashProfile = () => {
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
-  }
+  };
+
+
+  const handleSignOut = async () =>{
+    try{
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message)
+      }else{
+        dispatch(signOutSuccess())
+      }
+    } catch (error){
+      console.log(error.message)
+    }
+  };
 
   return (
     <div className="dash-profile">
@@ -192,7 +210,7 @@ const DashProfile = () => {
       </form>
       <div className="profile-form-p">
         <p onClick={()=> setShowModal(true)}>Delete Account</p>
-        <p>Sign Out</p>
+        <p onClick={handleSignOut}>Sign Out</p>
       </div>
 
       <p className="update-success">{updateUserSuccess}</p>

@@ -1,5 +1,5 @@
 import express from 'express';
-import { test, updateUser } from '../controllers/user.controller.js';
+import { signout, test, updateUser } from '../controllers/user.controller.js';
 import { veriifyToken } from '../utils/verifyUser.js';
 import { deleteUser } from '../controllers/user.controller.js';
 
@@ -10,6 +10,7 @@ router.get('/test', test)
 //we need to verify that only the person logged in can update the profile and also delete it
 router.put('/update/:userId',veriifyToken, updateUser);
 router.delete('/delete/:userId', veriifyToken, deleteUser);
+router.post('/signout', signout);
 
 
 export default router;

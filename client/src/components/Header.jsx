@@ -5,6 +5,7 @@ import { MdLightMode } from "react-icons/md";
 import { Link, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { signOutSuccess } from '../redux/user/userSlice';
 import { GiMoon } from "react-icons/gi";
 import { toggleTheme } from '../redux/theme/themeSlice';
 
@@ -18,6 +19,25 @@ const Header = () => {
   const handleMenu = () =>{
     setMenu(!menu)
   }
+
+  const handleSignOut = async () =>{
+    try{
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message)
+      }else{
+        dispatch(signOutSuccess())
+      }
+    } catch (error){
+      console.log(error.message)
+    }
+  };
+
+
   return (
     <header className='header-container'>
       <nav className='nav-bar'>
@@ -48,7 +68,7 @@ const Header = () => {
                   <span>{currentUser.email}</span>
                 </div>
                 <Link to='/dashboard?tab=profile'><p>Profile</p></Link>
-                <p>SignOut</p>
+                <p onClick={handleSignOut}>SignOut</p>
              </div>
             }
            
