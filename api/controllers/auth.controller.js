@@ -59,8 +59,9 @@ export const signin = async (req, res, next) => {
     }
 
     //to get the token we use the json web token and also use a secret key
+    //we add the isAdmin property to the cookie also to get more information and priviledges as an admin
     const token = jwt.sign(
-      {id: validUser._id},
+      {id: validUser._id, isAdmin: validUser.isAdmin},
       process.env.JWT_SECRETKEY, 
     );
 
@@ -85,7 +86,8 @@ export const google = async (req, res, next) =>{
   try{
     const user = await User.findOne({email});
     if(user){
-      const token = jwt.sign({id: user._id}, process.env.JWT_SECRETKEY);
+      //we add the isAdmin property to the cookie also to get more information and priviledges as an admin
+      const token = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_SECRETKEY);
       const {password, ...rest} = user._doc;
       res.status(200).cookie('access_token', token, {
         httpOnly: true,
@@ -105,7 +107,8 @@ export const google = async (req, res, next) =>{
 
       await newUser.save();
       const token = jwt.sign({
-        id: newUser._id
+        id: newUser._id,
+        isAdmin: newUser.isAdmin
       }, process.env.JWT_SECRETKEY);
 
       const {password, ...rest} = newUser._doc;
