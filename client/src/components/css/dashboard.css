@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 90vh;
   flex-direction: column;
 }
 
@@ -172,8 +172,8 @@
 }
 
 .profile-form-btn.lights:hover{
-  background-color: white;
-  color: black;
+  background-color: var(--grey);
+  color: white;
 }
 
 p.update-error{
@@ -277,4 +277,28 @@ p.delete-txt{
 
 .delete-btn-lnr button.delete-right-btn:hover{
   background-color: gray;
+}
+
+
+a button.profile-form-btn.create-post{
+  background-color: black;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+a button.profile-form-btn.create-post:hover{
+  background-color: var(--green);
+  border: 0;
+}
+
+.profile-form-btn.create-post-lit{
+  background-color: white;
+  color: black;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+.profile-form-btn.create-post-lit:hover{
+  background-color: var(--grey);
+  color: white;
 }

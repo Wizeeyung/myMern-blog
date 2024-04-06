@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage';
 import { app } from "../firebase";
+import { Link } from "react-router-dom";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -12,7 +13,7 @@ import { updateSuccess, updateStart, updateFailure, deleteUserStart, deleteUserS
 const DashProfile = () => {
 
   const {theme} = useSelector((state)=> state.theme);
-  const {currentUser, error} = useSelector((state)=> state.user);
+  const {currentUser, error, loading} = useSelector((state)=> state.user);
   const [imageFile , setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const filePickerRef = useRef();
@@ -206,7 +207,10 @@ const DashProfile = () => {
         <input type="text" id="username" placeholder="username" defaultValue={currentUser.username}  onChange={handleChange}/>
         <input type="email" id="email" placeholder="email" defaultValue={currentUser.email} onChange={handleChange}/>
         <input type="password" id="password" placeholder="password" onChange={handleChange}/>
-        <button className={theme === 'dark' ? "profile-form-btn lights" : 'profile-form-btn'} type="submit">Update</button>
+        <button className={theme === 'dark' ? "profile-form-btn lights" : 'profile-form-btn'} type="submit" disabled={loading || imageFileUploading}>{loading ? 'loading....' : 'Update'}</button>
+        {currentUser.isAdmin &&
+        <Link to='/create-post'><button className={ theme === 'dark' ? "profile-form-btn create-post-lit" :"profile-form-btn create-post" }>Create Post</button></Link>
+}
       </form>
       <div className="profile-form-p">
         <p onClick={()=> setShowModal(true)}>Delete Account</p>
