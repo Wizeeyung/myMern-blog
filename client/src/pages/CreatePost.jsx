@@ -4,6 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
 
@@ -11,8 +12,8 @@ const CreatePost = () => {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageFileUploadError] = useState(null);
   const [formData, setFormData] = useState({});
-
-  console.log(file)
+  const [publishError, setPublishError] = useState(null);
+  const navigate = useNavigate();
 
 
   const handleUploadImage = async () => {
@@ -58,13 +59,45 @@ const CreatePost = () => {
   };
 
 
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+
+    try{
+      const res = await fetch('api/post/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(formData)
+    
+      });
+  
+      const data = await res.json();
+     
+      if(!res.ok){
+        setPublishError(data.message)
+        
+      }
+
+      if(res.ok){
+        setPublishError(null)
+        navigate(`/post/${data.slug}`);
+      }
+    }catch (error){
+        setPublishError('Something went wrong');
+    }
+    
+
+  }
+
+
   return (
     <div className='create-post-cover'>
       <div className="create-post-container">
         <h1>Create Post</h1>
-        <form className='create-post-form'>
-          <input type="text" id="title" placeholder="Title" required/>
-          <select>
+        <form className='create-post-form' onSubmit={handleSubmit}>
+          <input type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})}/>
+          <select onClick={(e) => setFormData({...formData, category : e.target.value})}>
             <option value='uncategorized'>select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='nextjs'>Next.js</option>
@@ -75,16 +108,21 @@ const CreatePost = () => {
             <button className='create-post-upload-btn' onClick={handleUploadImage} disabled={imageUploadProgress}>{imageUploadProgress ? imageUploadProgress + '%' : 'Upload Image'}</button>
           </div>
           {
-            imageUploadError && <p>{imageUploadError}</p>
+            imageUploadError && <p className='update-error publish'>{imageUploadError + ' !!!'}</p>
           }
           
           {
             formData.image && <div className='img-upload'><img src={formData.image} alt='image-upload' /></div>
           }
           
-          <ReactQuill  placeholder='Write something' required/>
+          <ReactQuill  placeholder='Write something' required 
+          onChange={(value) => {setFormData({...formData, content: value})}}/>
           <button type='submit' className='quill-btn'>Publish</button>
+          
         </form>
+        {
+            publishError && <p className='update-error publish'>{publishError + '!!!'}</p>
+          }
       </div>
     </div>
   )
