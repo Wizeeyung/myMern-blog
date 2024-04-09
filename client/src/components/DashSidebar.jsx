@@ -4,9 +4,10 @@ import { FaUser } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { toggleTheme } from '../redux/theme/themeSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutSuccess } from '../redux/user/userSlice';
+import { CgFileDocument } from "react-icons/cg";
+
 
 
 
@@ -15,9 +16,11 @@ import { signOutSuccess } from '../redux/user/userSlice';
 const DashSidebar = () => {
 
   const {theme} = useSelector((state) => state.theme)
-  const location = useLocation()
-  const [tab, setTab] = useState('')
-  const dispatch = useDispatch()
+  const location = useLocation();
+  const [tab, setTab] = useState('');
+  const dispatch = useDispatch();
+  const {currentUser} = useSelector((state)=> state.user);
+
 
   const handleSignOut = async () =>{
     try{
@@ -50,8 +53,16 @@ const DashSidebar = () => {
       <div className={tab === 'profile' ? 'profile active' : 'profile'}>
         <FaUser />
         <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null}>Profile</Link></p>
-        <span>User</span>
+        <span>{currentUser.isAdmin ? 'Admin' : 'User'}</span>
       </div>
+      {
+        currentUser.isAdmin &&
+        <div className={tab === 'post' ? 'profile active' : 'profile'}>
+          <CgFileDocument />
+          <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null}> Post</Link></p>
+        </div>
+      }
+      
       <div className='profile-sign'>
         <FaArrowRight />
         <p onClick={handleSignOut}>Signout</p>

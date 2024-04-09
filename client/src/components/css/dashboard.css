@@ -98,6 +98,10 @@
   margin-bottom: 10px;
 }
 
+.dash-sidebar .profile:hover{
+  background-color: rgba(113, 112, 112, 0.5);
+}
+
 .dash-sidebar .profile.active{
   background-color: rgba(113, 112, 112, 0.5);
 }
@@ -302,3 +306,4 @@ a button.profile-form-btn.create-post:hover{
   background-color: var(--grey);
   color: white;
 }
+
