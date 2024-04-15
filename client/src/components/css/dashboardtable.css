@@ -8,13 +8,13 @@
   table-layout: auto;
   overflow-x: scroll;
   padding: 20px;
-  
 }
 
-.dashboard-table {
+table.dashboard-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+ 
   box-shadow: 0 0 30px rgba(94, 89, 89, 0.5);
 }
 
@@ -35,9 +35,9 @@
   background-color: #f2f2f2;
 } */
 
-.dashboard-table tr:hover {
+/* .dashboard-table tr:hover {
   background-color: #ddd;
-}
+} */
 
 .dashboard-table tr.lights:hover {
   background-color: rgba(142, 139, 139, 0.3);
@@ -87,4 +87,38 @@
 
 .table-delete:hover{
   text-decoration: underline;
+}
+
+.show-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+
+button.show-more-btn{
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  background-color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button.show-more-btn:hover{
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+button.show-more-btn.lights:hover{
+  background-color: var(--grey);
+  color: white;
 }
