@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './css/dashboardtable.css';
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
 
 
@@ -10,6 +12,8 @@ const DashPost = () => {
   const {theme} = useSelector((state)=> state.theme);
   const [userPosts, setUserPosts] = useState([]);
   const [showMore, setShowMore] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [postIdToDelete, setPostIdToDelete] = useState('');
 
   useEffect(()=>{
     const fetchPosts = async () =>{
@@ -59,6 +63,28 @@ const DashPost = () => {
     }
   }
 
+  const handleDeletePost = async () =>{
+    setShowModal(false);
+    try{
+      const res = await fetch(`/api/post/deletepost/${postIdToDelete}/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await res.json();
+
+      if(!res.ok){
+        console.log(data.message)
+      } else {
+        setUserPosts((prev) => 
+          prev.filter((post)=> post._id !== postIdToDelete)
+        )
+      }
+
+    }catch(error){
+      console.log(error.message)
+    }
+  }
+
   return (
     <div className="dashboard-table-container">
       {currentUser.isAdmin && userPosts.length > 0 ? 
@@ -82,9 +108,11 @@ const DashPost = () => {
               <td className="table-img"><Link to={`/post/${post.slug}`}><img src={post.image} alt={post.title} /></Link></td>
               <td><Link to={`/post/${post.slug}`}  className={theme === 'dark' ? 'table-title lights' : "table-title" }>{post.title}</Link></td>
               <td>{post.category}</td>
-              <td><span className="table-delete">Delete</span></td>
+              <td><span className="table-delete" onClick={()=> {setShowModal(true)
+                setPostIdToDelete(post._id)
+              }}>Delete</span></td>
               <td><Link to={`/update-post/${post._id}`} className="table-edit"><span>Edit</span></Link></td>
-
+                  
             </tr>
           ))}
         </tbody>
@@ -93,6 +121,22 @@ const DashPost = () => {
       {showMore && <div className="show-btn"><button onClick={handleShowMore} className={theme === 'dark' ? "show-more-btn lights" : 'show-more-btn'}>Show More</button></div>}
       </> 
       : <p>You have no post yet</p>}
+
+      {
+        showModal &&
+        <div className="delete-modes delete-modal-container">
+        <div className="delete-modal">
+          <IoClose className="delete-cls-btn" onClick={()=> setShowModal(false)}/>
+          <IoMdInformationCircleOutline className="delete-info-btn"/>
+          <p className="delete-txt">Are you sure you want to delete this post <br /> your account?</p>
+          <div className="delete-btn-lnr">
+            <button className="delete-left-btn"onClick={handleDeletePost}>Yes</button>
+            <button className="delete-right-btn" onClick={()=> setShowModal(false)}>No</button>
+
+          </div>
+        </div>
+      </div>
+      }
       
 
     </div>

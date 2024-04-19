@@ -122,3 +122,10 @@ button.show-more-btn.lights:hover{
   background-color: var(--grey);
   color: white;
 }
+
+
+.delete-modes.delete-modal-container{
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
