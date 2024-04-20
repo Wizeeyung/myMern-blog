@@ -16,6 +16,7 @@ const UpdatePost = () => {
   const [publishError, setPublishError] = useState(null);
   const navigate = useNavigate();
   const {postId} = useParams();
+  const {theme} = useSelector((state)=> state.theme);
 
   const {currentUser} = useSelector((state)=> state.user);
   //we use useParams to get the if of the post, and useEffect to update the page based on the postId using the getrequest
@@ -120,8 +121,8 @@ const UpdatePost = () => {
       <div className="create-post-container">
         <h1>Update Post</h1>
         <form className='create-post-form' onSubmit={handleSubmit}>
-          <input  type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})} value={formData.title}/>
-          <select  onClick={(e) => setFormData({...formData, category : e.target.value})} value={formData.category}>
+          <input className={ theme === 'dark' ? "update-input" : "" }  type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})} value={formData.title}/>
+          <select  className={ theme === 'dark' ? "update-select" : "" }  onChange={(e) => setFormData({...formData, category : e.target.value})} value={formData.category}>
             <option value='uncategorized'>select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='nextjs'>Next.js</option>
@@ -139,7 +140,7 @@ const UpdatePost = () => {
             formData.image && <div className='img-upload'><img src={formData.image} alt='image-upload' /></div>
           }
           
-          <ReactQuill  placeholder='Write something' required 
+          <ReactQuill placeholder='Write something' required 
           onChange={(value) => {setFormData({...formData, content: value})}} value={formData.content}/>
           <button type='submit' className='quill-btn'>Update post</button>
           

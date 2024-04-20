@@ -5,6 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 const CreatePost = () => {
 
@@ -14,6 +15,7 @@ const CreatePost = () => {
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
   const navigate = useNavigate();
+  const {theme} = useSelector((state)=> state.theme);
 
 
   const handleUploadImage = async () => {
@@ -96,8 +98,8 @@ const CreatePost = () => {
       <div className="create-post-container">
         <h1>Create Post</h1>
         <form className='create-post-form' onSubmit={handleSubmit}>
-          <input type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})}/>
-          <select onClick={(e) => setFormData({...formData, category : e.target.value})}>
+          <input className={ theme === 'dark' ? "update-input" : "" } type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})}/>
+          <select className={ theme === 'dark' ? "update-select" : "" } onClick={(e) => setFormData({...formData, category : e.target.value})}>
             <option value='uncategorized'>select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='nextjs'>Next.js</option>

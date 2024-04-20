@@ -64,6 +64,34 @@ const DashUsers = () => {
     }
   }
 
+
+  const handleDeleteUser = async () =>{
+    try{
+      const res = await fetch(`/api/user/delete/${userIdToDelete}`,{
+        method: 'DELETE'
+      });
+
+      const data = await res.json();
+
+      if(!res.ok){
+        console.log(data.message)
+      }else{
+        setUsers((prev) =>
+          prev.filter((user)=> user._id !== userIdToDelete)
+        )
+        setShowModal(false)
+      }
+      
+    }catch (error){
+      console.log(error.message);
+    }
+  }
+
+
+
+
+
+
   // const handleDeletePost = async () =>{
   //   setShowModal(false);
   //   try{
@@ -130,7 +158,7 @@ const DashUsers = () => {
           <IoMdInformationCircleOutline className="delete-info-btn"/>
           <p className="delete-txt">Are you sure you want to delete <br /> this user? ?</p>
           <div className="delete-btn-lnr">
-            <button className="delete-left-btn">Yes</button>
+            <button onClick={handleDeleteUser} className="delete-left-btn">Yes, i am sure</button>
             <button className="delete-right-btn" onClick={()=> setShowModal(false)}>No</button>
 
           </div>

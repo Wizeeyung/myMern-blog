@@ -266,7 +266,9 @@ p.delete-txt{
   
 }
 
+
 .delete-btn-lnr button.delete-left-btn{
+  margin-left: 0;
   background-color: rgb(208, 50, 50);
 }
 
@@ -305,5 +307,16 @@ a button.profile-form-btn.create-post:hover{
 .profile-form-btn.create-post-lit:hover{
   background-color: var(--grey);
   color: white;
+}
+
+
+.update-input{
+  color: white;
+  border-color: white;
+}
+
+.create-post-form select.update-select{
+  color: white;
+  background-color: var(--grey);
 }
 
