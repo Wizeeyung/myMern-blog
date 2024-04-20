@@ -7,9 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutSuccess } from '../redux/user/userSlice';
 import { CgFileDocument } from "react-icons/cg";
-
-
-
+import { FaUsersLine } from "react-icons/fa6";
 
 
 
@@ -60,6 +58,13 @@ const DashSidebar = () => {
         <div className={tab === 'post' ? 'profile active' : 'profile'}>
           <CgFileDocument />
           <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null}> Post</Link></p>
+        </div>
+      }
+      {
+        currentUser.isAdmin &&
+        <div className={tab === 'post' ? 'profile active' : 'profile'}>
+          <FaUsersLine />
+          <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null}>User</Link></p>
         </div>
       }
       

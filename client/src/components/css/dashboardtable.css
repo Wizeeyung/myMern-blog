@@ -54,6 +54,30 @@ table.dashboard-table {
   object-fit: cover;
 }
 
+.dashboard-table tr td.usertable-img img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.isadmin-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.isadmin-btn svg:first-child{
+  color: red;
+}
+
+.isadmin-btn svg.mark{
+  color: green;
+}
+
+.usertable-img{
+  display: flex;
+  justify-content: center;
+}
+
 .table-title{
   text-decoration: none;
   color: black;
