@@ -23,7 +23,7 @@ const UpdatePost = () => {
   useEffect(()=>{
     try{
         const fetchPost = async () =>{
-          const res = await fetch(`/api/post/getpost/?postId=${postId}`);
+          const res = await fetch(`/api/post/getpost?postId=${postId}`);
           const data = await res.json();
 
           if(!res.ok){
@@ -39,7 +39,7 @@ const UpdatePost = () => {
 
           
         }
-        fetchPost()
+        fetchPost();
     }catch(error){
       console.log(error.message);
     }
@@ -121,8 +121,8 @@ const UpdatePost = () => {
       <div className="create-post-container">
         <h1>Update Post</h1>
         <form className='create-post-form' onSubmit={handleSubmit}>
-          <input className={ theme === 'dark' ? "update-input" : "" }  type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})} value={formData.title}/>
-          <select  className={ theme === 'dark' ? "update-select" : "" }  onChange={(e) => setFormData({...formData, category : e.target.value})} value={formData.category}>
+          <input className={ theme === 'dark' ? "update-input" : "" }  type="text" id="title" placeholder="Title" required onChange={(e) => setFormData({...formData, title : e.target.value})} value={formData?.title}/>
+          <select  className={ theme === 'dark' ? "update-select" : "" }  onChange={(e) => setFormData({...formData, category : e.target.value})} value={formData?.category}>
             <option value='uncategorized'>select a category</option>
             <option value='javascript'>JavaScript</option>
             <option value='nextjs'>Next.js</option>
