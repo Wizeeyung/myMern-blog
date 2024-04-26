@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import {Link, useParams} from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
-import img from '../assets/web-img.jpg';
 import '../components/css/postpage.css';
+import CallToAction from "../components/CallToAction";
+import CommentSection from "../components/CommentSection";
 
 const PostPage = () => {
 
@@ -53,33 +54,25 @@ const PostPage = () => {
     <div className="singlepost-container">
       {loading && <div className="post-loader"><ClipLoader type='TailSpin' height='50' width='50' color='red'/></div>}
       {post && ( // Only render when loading is false and post data is available
+        <>
         <div className="singlepost-content">
           <h1>{post.title}</h1>
           <button><Link to={`/search/?category=${post.category}`}>{post.category}</Link></button>
-          <div className="singlepost-img"><img src={post.image} alt={post.title} /></div>
+          <div className="singlepost-img"><img src={post.image} alt={post.title} loading="lazy" /></div>
           <div className="date-time-txt">
             <span>{new Date(post.createdAt).toLocaleDateString()}</span>
             <span>{(post.content.length / 1000).toFixed(0)} mins read</span>
           </div>
           <div className="singlepost-p" dangerouslySetInnerHTML={{ __html: post.content }}></div>
         </div>
+
+        
+        <CallToAction />
+        <CommentSection postId={post._id}/>
+        </>
       )
       }
 
-      <div className="cta">
-        <div className="cta-left">
-          <div className="cta-left-content">
-          <h1>Want to know more about how amazing <br/> my projects are?</h1>
-          <span>Check out my projects by clicking on the button below</span>
-          </div>
-          {/* rel='noopener noreferrer'  attribute is added for security reasons to prevent a potential security vulnerability called "tabnabbing". */}
-          <button><Link to='https://github.com/Wizeeyung?tab=repositories' target='_blank' rel='noopener noreferrer'>My Projects</Link></button>
-        </div>
-        <div className="cta-right">
-          <img src={img} alt="blog-pic" />
-        </div>
-
-      </div>
 
     </div>
   )
