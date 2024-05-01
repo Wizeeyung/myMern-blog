@@ -94,12 +94,12 @@ const CommentSection = ({postId}) => {
         </form>
       }
 
-      {comments?.length > 0 && 
+      {comments?.length > 0 ?
       
         <div className='comments-container'>
           <p>Comments <span className='comments-count'>{comments.length}</span></p>
          {comments.map((comment)=>(<Comment key={comment._id} comment={comment} />))}
-        </div>
+        </div> : <p>No comments yet!</p>
       }
     </div>
   )

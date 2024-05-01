@@ -187,6 +187,7 @@ button a{
 
 .comment-sign img{
   width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-left: 10px;
   margin-right: 5px;
@@ -296,6 +297,7 @@ p.update-error{
   align-self: flex-start;
   margin-right: 10px;
   width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 

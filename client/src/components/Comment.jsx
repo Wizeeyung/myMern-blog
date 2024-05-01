@@ -38,7 +38,7 @@ const Comment = ({comment}) => {
     <div className='comment-list'>
                 <img src={user?.profilePicture} alt='profile-pic'/>
                 <div className='comment-list-right'>
-                  <p>@{user?.username} <span>{moment(comment.createdAt).fromNow()}</span></p>
+                  <p>{user ? `@${user?.username}` : 'Anonymous user'} <span>{moment(comment.createdAt).fromNow()}</span></p>
                   <span className='comment-ct'>{comment.content}</span>
                   {!liked ? <BiLike onClick={handleLiked} /> : <BiSolidLike onClick={handleLiked} /> }
                 </div>
