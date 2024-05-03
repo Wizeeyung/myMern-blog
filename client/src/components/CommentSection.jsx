@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Comment from './Comment';
 
 
@@ -10,8 +10,8 @@ const CommentSection = ({postId}) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState(null);
   const [commentError, setCommentError] = useState(null);
+  const navigate = useNavigate();
 
-  console.log(comments)
   useEffect(()=>{
       const getPostComments = async () =>{
 
@@ -64,6 +64,34 @@ const CommentSection = ({postId}) => {
     }
 
   };
+
+  const handleLike = async (commentId) =>{
+    try{
+      if(!currentUser){
+        navigate('/sign-in');
+        //it's essential to include the return statement to exit the function early if the user is not logged in to prevent further execution of unauthorized actions.
+        return;
+      }
+      const res = await fetch(`/api/comment/likeComment/${commentId}` ,{
+        method: 'PUT',
+      });
+
+      //if response is okay, update the comment likes and number of likes other return the comment
+      if(res.ok){
+        const data = await res.json();
+        setComments(comments.map((comment)=> (
+          comment._id === commentId ? {
+            ...comment,
+            likes: data.likes,
+            numberOfLikes: data.likes.length,
+          } : comment
+        )))
+      }
+    }catch(error){
+      console.log(error.message)
+    }
+
+  }
   return (
     <div className='comment-container'>
       {
@@ -98,7 +126,7 @@ const CommentSection = ({postId}) => {
       
         <div className='comments-container'>
           <p>Comments <span className='comments-count'>{comments.length}</span></p>
-         {comments.map((comment)=>(<Comment key={comment._id} comment={comment} />))}
+         {comments.map((comment)=>(<Comment key={comment._id} comment={comment} onLike={handleLike}/>))}
         </div> : <p>No comments yet!</p>
       }
     </div>

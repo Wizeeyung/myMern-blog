@@ -305,11 +305,13 @@ p.update-error{
   align-self: flex-start;
 }
 
-.comment-list-right p{
+.comment-list-right p:first-child{
   font-weight: bold;
   font-size: 14px;
-  margin-top: 0;
+  margin-top: 0;  
+  margin-bottom: 5px;
 }
+
 
 .comment-list-right p span{
   font-weight: lighter;
@@ -317,13 +319,42 @@ p.update-error{
   margin-left: 10px;
 }
 
+
+
 .comment-list-right span.comment-ct{
   font-size: 14px;
+  margin-top: -10px;
 }
 
-.comment-list-right svg{
-  display: block;
+
+.comment-list-right-ct{
   margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-list-right-ct button{
+  background-color: transparent;
+  font-size: 1.2rem;
+  border: none;
+  align-self: flex-start;
+  margin-left: -5px;
+  cursor: pointer;
+}
+
+.comment-list-right-ct button svg.solid{
+  color: var(--green);
+}
+
+.comment-list-right-ct button svg.normal{
+  color: gray;
+}
+
+.comment-list-right-ct p{
+  margin: 0;
+  margin-top: -5px;
+  color: grey;
+  font-size: 14px;
 }
 
 

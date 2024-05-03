@@ -4,15 +4,13 @@ import { BiSolidLike } from "react-icons/bi";
 import {useSelector} from 'react-redux';
 import moment from 'moment';
 
-const Comment = ({comment}) => {
+const Comment = ({comment, onLike}) => {
 
   const [user, setUser] = useState({})
-  const [liked, setLiked] = useState(false);
+  const {currentUser} = useSelector((state)=> state.user)
   
-  const handleLiked = () =>{
-    setLiked(!liked)
-  };
-
+  console.log(comment)
+  
   //for this page, trying to get each user that made a particular comment to display under the comment section
 
   useEffect(()=>{
@@ -38,10 +36,15 @@ const Comment = ({comment}) => {
     <div className='comment-list'>
                 <img src={user?.profilePicture} alt='profile-pic'/>
                 <div className='comment-list-right'>
-                  <p>{user ? `@${user?.username}` : 'Anonymous user'} <span>{moment(comment.createdAt).fromNow()}</span></p>
-                  <span className='comment-ct'>{comment.content}</span>
-                  {!liked ? <BiLike onClick={handleLiked} /> : <BiSolidLike onClick={handleLiked} /> }
-                </div>
+                  <p className="ct-p">{user ? `@${user?.username}` : 'Anonymous user'} <span>{moment(comment.createdAt).fromNow()}</span></p>
+                    <span className='comment-ct'>{comment.content}</span>
+                    <div className="comment-list-right-ct">
+                      <button onClick={()=> onLike(comment._id)}> {currentUser && comment.likes.includes(currentUser._id) ? <BiSolidLike className="solid"/> : <BiLike className="normal"/>} </button>
+                      <p>{comment.numberOfLikes > 0 && comment.numberOfLikes + ' ' + 
+                      (comment.numberOfLikes === 1 ? 'like' : 'likes')}</p>
+                   
+                    </div>
+               </div>
     </div>
   )
 }
