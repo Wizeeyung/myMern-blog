@@ -92,6 +92,15 @@ const CommentSection = ({postId}) => {
     }
 
   }
+
+  //creating handleEdit function here cause we need to update the state from the array of comments to update immediately as its present in the commentSectionComponents
+  const handleEdit = (comment, editedContent) =>{
+    setComments(comments.map((c) => 
+    c._id === comment._id ? {...c, content : editedContent} : c
+  ))
+
+  }
+
   return (
     <div className='comment-container'>
       {
@@ -126,7 +135,7 @@ const CommentSection = ({postId}) => {
       
         <div className='comments-container'>
           <p>Comments <span className='comments-count'>{comments.length}</span></p>
-         {comments.map((comment)=>(<Comment key={comment._id} comment={comment} onLike={handleLike}/>))}
+         {comments.map((comment)=>(<Comment key={comment._id} comment={comment} onLike={handleLike} onEdit={handleEdit}/>))}
         </div> : <p>No comments yet!</p>
       }
     </div>

@@ -354,7 +354,75 @@ p.update-error{
   margin: 0;
   margin-top: -5px;
   color: grey;
-  font-size: 14px;
+  font-size: 12px;
 }
 
+.save-btn{
+  align-self: center;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  background-color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
+.save-btn:hover{
+  background-color: var(--grey);
+  color: white;
+  border: 1px solid black;
+}
+
+.cancel-btn{
+  align-self: center;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-left: 5px;
+}
+
+.cancel-btn:hover{
+  background-color: var(--grey);
+  color: white;
+  border: 1px solid black;
+}
+
+.is-edit{
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+.is-edit-btn{
+  align-self: flex-end;
+}
+
+.txt-area{
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+button.edit-btn{
+  font-size: 12px;
+  align-self: center;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  color: gray;
+}
+
+button.edit-btn:hover{
+  text-decoration: underline;
+
+}
