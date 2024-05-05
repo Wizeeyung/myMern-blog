@@ -4,7 +4,7 @@ import { BiSolidLike } from "react-icons/bi";
 import {useSelector} from 'react-redux';
 import moment from 'moment';
 
-const Comment = ({comment, onLike, onEdit}) => {
+const Comment = ({comment, onLike, onEdit, onDelete}) => {
 
   const [user, setUser] = useState({});
   const {currentUser} = useSelector((state)=> state.user);
@@ -86,9 +86,14 @@ const Comment = ({comment, onLike, onEdit}) => {
                         {/* edit should only show if the current user id is equal to comment id or the current user is an admin */}
                         {
                           currentUser && (currentUser._id === comment.userId || currentUser.isAdmin) &&
+                          <>
                           <button className="edit-btn" onClick={editComment}>
                             Edit
                           </button>
+                          <button className="edit-btn" onClick={()=> onDelete(comment._id)}>
+                            Delete
+                          </button>
+                          </>
                         }
                       </div>
                     </>
@@ -102,4 +107,4 @@ const Comment = ({comment, onLike, onEdit}) => {
   )
 }
 
-export default Comment
+export default Comment;
