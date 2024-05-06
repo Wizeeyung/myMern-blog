@@ -320,3 +320,75 @@ a button.profile-form-btn.create-post:hover{
   background-color: var(--grey);
 }
 
+.post-card-container{
+  margin-bottom: 30px;
+}
+
+.recent-post{
+  width: 95vw;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.post-card-container h1{
+  text-align: center;
+  margin-top: 0;
+}
+.post-card-img{
+  width: 350px;
+  height: 200px;
+}
+
+.post-card-img img{
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease-in;
+}
+
+.post-card-img img:hover{
+  transform: scaleX(1.05);
+  transform: scaleY(1.05);
+}
+
+.post-card{
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.post-card h3{
+  width: 350px;
+  font-size: 14px;
+}
+
+.post-card-ct{
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--grey);
+  color: white;
+  font-size: 12px;
+}
+
+.post-card-btn{
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.post-card-btn:hover{
+  background-color: var(--green);
+  color: white;
+}

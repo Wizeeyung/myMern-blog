@@ -4,6 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import '../components/css/postpage.css';
 import CallToAction from "../components/CallToAction";
 import CommentSection from "../components/CommentSection";
+import PostCard from "../components/PostCard";
 
 const PostPage = () => {
 
@@ -12,6 +13,7 @@ const PostPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
+  const [recentPosts, setRecentPosts] = useState(null);
 
 
   console.log(post, postSlug)
@@ -49,6 +51,27 @@ const PostPage = () => {
     
   }, [postSlug]);
 
+
+  useEffect(()=>{
+    try{
+      const fetchRecentPosts = async () => {
+        const res = await fetch(`/api/post/getpost?limit=3`);
+
+        const data = await res.json()
+        if(res.ok){
+          setRecentPosts(data.posts)
+        }
+      }
+
+      fetchRecentPosts()
+    }catch(error){
+      console.log(error.message)
+
+    }
+  }, [])
+
+  
+
  
   return (
     <div className="singlepost-container">
@@ -69,6 +92,14 @@ const PostPage = () => {
         
         <CallToAction />
         <CommentSection postId={post._id}/>
+        <div className="post-card-container">
+          <h1>Recent Article</h1>
+          <div className="recent-post">
+            {recentPosts && recentPosts.map((post)=>
+          (<PostCard key={post._id} post={post} />)
+          )}
+          </div>
+        </div>
         </>
       )
       }
