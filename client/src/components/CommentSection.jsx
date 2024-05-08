@@ -176,7 +176,7 @@ const CommentSection = ({postId}) => {
         <div className="delete-modal">
           <IoClose className="delete-cls-btn" onClick={()=> setShowModal(false)}/>
           <IoMdInformationCircleOutline className="delete-info-btn"/>
-          <p className="delete-txt">Are you sure you want to delete this<br /> post?</p>
+          <p className="delete-txt">Are you sure you want to delete this<br /> comment?</p>
           <div className="delete-btn-lnr">
             <button className="delete-left-btn"onClick={()=>handleDelete(commentToDelete)}>Yes</button>
             <button className="delete-right-btn" onClick={()=> setShowModal(false)}>No</button>

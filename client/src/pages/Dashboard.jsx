@@ -5,6 +5,7 @@ import DashSidebar from "../components/DashSidebar";
 import { useSelector } from "react-redux";
 import DashPost from "../components/DashPost";
 import DashUsers from "../components/DashUsers";
+import DashComments from "../components/DashComments";
 const Dashboard = () => {
 
   const location = useLocation();
@@ -28,6 +29,7 @@ const Dashboard = () => {
         {tab === 'profile' && <DashProfile />}
         {tab === 'post' && <DashPost />}
         {tab === 'user' && <DashUsers />}
+        {tab === 'comments' && <DashComments />}
 
       </div>
     </div>

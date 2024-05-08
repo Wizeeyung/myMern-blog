@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signOutSuccess } from '../redux/user/userSlice';
 import { CgFileDocument } from "react-icons/cg";
 import { FaUsersLine } from "react-icons/fa6";
+import { MdOutlineInsertComment } from "react-icons/md";
 
 
 
@@ -62,9 +63,16 @@ const DashSidebar = () => {
       }
       {
         currentUser.isAdmin &&
-        <div className={tab === 'post' ? 'profile active' : 'profile'}>
+        <div className={tab === 'user' ? 'profile active' : 'profile'}>
           <FaUsersLine />
           <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null}>User</Link></p>
+        </div>
+      }
+      {
+        currentUser.isAdmin &&
+        <div className={tab === 'comments' ? 'profile active' : 'profile'}>
+          <MdOutlineInsertComment />
+          <p><Link to='/dashboard?tab=comments' className={theme === 'light' ? 'darks' : null}>Comments</Link></p>
         </div>
       }
       
