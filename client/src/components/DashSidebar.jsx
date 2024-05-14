@@ -9,6 +9,7 @@ import { signOutSuccess } from '../redux/user/userSlice';
 import { CgFileDocument } from "react-icons/cg";
 import { FaUsersLine } from "react-icons/fa6";
 import { MdOutlineInsertComment } from "react-icons/md";
+import { BiSolidDashboard } from "react-icons/bi";
 
 
 
@@ -54,6 +55,13 @@ const DashSidebar = () => {
         <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null}>Profile</Link></p>
         <span>{currentUser.isAdmin ? 'Admin' : 'User'}</span>
       </div>
+      {
+        currentUser.isAdmin &&
+        <div className={tab === 'dash' ? 'profile active' : 'profile'}>
+          <BiSolidDashboard />
+          <p><Link to='/dashboard?tab=dash' className={theme === 'light' ? 'darks' : null}>Dashboard</Link></p>
+        </div>
+      }
       {
         currentUser.isAdmin &&
         <div className={tab === 'post' ? 'profile active' : 'profile'}>

@@ -1,0 +1,155 @@
+:root{
+  --green: rgb(45, 168, 45);
+  --black: black;
+  --grey: rgb(49, 46, 46);
+}
+
+.dashboard-comp-ct{
+  display: flex;
+  flex-direction: column;
+  padding: 30px 5%;
+}
+
+.dashboard-first-row{
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-first-row-ct{
+  position: relative;
+  width: 300px;
+  border-radius: 5px;
+  margin: 0 10px;
+  box-shadow: 0 0 30px rgba(94, 89, 89, 0.5);
+  padding: 10px;
+  background-color: rgba(141, 140, 140, 0.5);
+
+}
+
+.dashboard-first-row-ct h3{
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.dashboard-first-row-ct span.svg{
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.blue{
+  color: indigo;
+}
+
+.green{
+  color: var(--green);
+}
+
+.grey{
+  color: goldenrod;
+}
+
+.dashboard-first-row-ct h1{
+  margin: 0 0 5px 0;
+  font-size: 25px;
+}
+
+
+.arrow-svg{
+  display: flex;
+  align-items: center;
+}
+
+.arrow-svg svg{
+  color: green;
+
+}
+
+.user-table-img img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.user-table-img-post img{
+  width: 50px;
+  height: 30px;
+}
+.user-name-th{
+  /* width: 95%; */
+  display: flex;
+  align-self: flex-start;
+  margin-left: 40px;
+}
+
+.recent-users-hd button{
+  background-color: transparent;
+  outline: none;
+  /* height: 40px; */
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  background-color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.recent-users-hd button:hover{
+  background-color: var(--grey);
+}
+
+.dashboard-second-row-ct-left .recent-users-ct{
+  font-size: 12px;
+  width: 25vw;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(94, 89, 89, 0.3);
+}
+
+.recent-users-ct{
+  font-size: 12px;
+  width: 70%;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(94, 89, 89, 0.3);
+}
+
+.recent-users-hd{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-table th,
+.user-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+table.user-table{
+  width: 100%;
+  border-collapse: collapse;
+  /* background-color: rgba(141, 140, 140, 0.5); */
+  box-shadow: 0 0 30px rgba(94, 89, 89, 0.3);
+}
+
+.dashboard-second-row-ct-left{
+  display: flex;
+
+}
+
+.dashboard-second-row-ct{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
