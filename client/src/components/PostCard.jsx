@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const PostCard = ({post}) => {
+
+  const {theme} = useSelector((state)=> state.theme);
   return (
     <div className="post-card">
       <div className="post-card-img">
@@ -7,7 +11,7 @@ const PostCard = ({post}) => {
       </div>
       <h3>{post.title.length > 35 ? post.title.split('').slice(0, 45).join('') + '....' : post.title}</h3>
       <p className="post-card-ct">{post.category}</p>
-      <Link to={`/post/${post.slug}`}><button className="post-card-btn">Read article</button></Link>
+      <Link to={`/post/${post.slug}`}><button className={ theme === 'dark' ? "profile-form-btn create-post-lit" :"post-card-btn" } >Read article</button></Link>
 
     </div>
   )

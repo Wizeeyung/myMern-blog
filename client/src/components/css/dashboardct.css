@@ -114,6 +114,7 @@
 }
 
 .recent-users-ct{
+  border: 1px solid gray;
   font-size: 12px;
   width: 70%;
   margin-top: 50px;
@@ -138,7 +139,7 @@
 table.user-table{
   width: 100%;
   border-collapse: collapse;
-  /* background-color: rgba(141, 140, 140, 0.5); */
+  border: 1px solid gray;
   box-shadow: 0 0 30px rgba(94, 89, 89, 0.3);
 }
 

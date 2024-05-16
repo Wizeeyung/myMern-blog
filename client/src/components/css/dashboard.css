@@ -175,6 +175,10 @@
   border: 1px solid black;
 }
 
+.post-card .profile-form-btn{
+  height: unset;
+}
+
 .profile-form-btn.lights:hover{
   background-color: var(--grey);
   color: white;

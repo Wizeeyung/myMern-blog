@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {Link, useParams} from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
 import '../components/css/postpage.css';
+import { useSelector } from "react-redux";
 import CallToAction from "../components/CallToAction";
 import CommentSection from "../components/CommentSection";
 import PostCard from "../components/PostCard";
@@ -14,6 +15,7 @@ const PostPage = () => {
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
+  const {theme} = useSelector((state)=> state.theme);
 
 
   console.log(post, postSlug)
@@ -80,7 +82,7 @@ const PostPage = () => {
         <>
         <div className="singlepost-content">
           <h1>{post.title}</h1>
-          <button><Link to={`/search/?category=${post.category}`}>{post.category}</Link></button>
+          <button className={theme === 'dark' ? 'btn-light' : ''}><Link to={`/search/?category=${post.category}`}>{post.category}</Link></button>
           <div className="singlepost-img"><img src={post.image} alt={post.title} loading="lazy" /></div>
           <div className="date-time-txt">
             <span>{new Date(post.createdAt).toLocaleDateString()}</span>
