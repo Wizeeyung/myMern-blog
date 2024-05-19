@@ -1,7 +1,11 @@
+import CallToAction from "../components/CallToAction"
 
 const Projects = () => {
   return (
-    <div>Projects</div>
+    <div className="project-container">
+      <h1>Projects</h1>
+      <CallToAction />
+    </div>
   )
 }
 

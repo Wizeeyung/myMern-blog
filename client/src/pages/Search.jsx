@@ -98,6 +98,8 @@ const Search = () => {
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`)
 
+    // setSidebarData({ ...sidebarData, searchTerm: '' });
+
   };
 
 
