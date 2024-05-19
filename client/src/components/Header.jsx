@@ -2,9 +2,9 @@ import logo from '../assets/logowizwhite.png'
 import { IoSearch } from "react-icons/io5";
 import './css/header.css'
 import { MdLightMode } from "react-icons/md";
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signOutSuccess } from '../redux/user/userSlice';
 import { GiMoon } from "react-icons/gi";
 import { toggleTheme } from '../redux/theme/themeSlice';
@@ -12,9 +12,23 @@ import { toggleTheme } from '../redux/theme/themeSlice';
 const Header = () => {
 
   const {theme} = useSelector((state) => state.theme);
-  const {currentUser} = useSelector((state) => state.user)
-  const [menu, setMenu] = useState(false)
-  const dispatch = useDispatch()
+  const {currentUser} = useSelector((state) => state.user);
+  const [menu, setMenu] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location, searchTerm);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+
+    if(searchTermFromUrl){
+      setSearchTerm(searchTermFromUrl)
+    }
+
+  }, [location.search]);
 
   const handleMenu = () =>{
     setMenu(!menu)
@@ -37,13 +51,23 @@ const Header = () => {
     }
   };
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set('searchTerm', searchTerm);
+
+    //want to make sure the search query is a string
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  }
+
 
   return (
     <header className='header-container'>
       <nav className='nav-bar'>
         <Link to='/'><img src={logo} alt="logo" /></Link>
-        <form className='search-box'>
-            <input type='text' placeholder='search'/>
+        <form className='search-box' onSubmit={handleSubmit}>
+            <input type='text' placeholder='search' onChange={(e)=> setSearchTerm(e.target.value)} value={searchTerm}/>
             <IoSearch className='search-icon'/>
         </form>
         <ul className='nav-links'>
