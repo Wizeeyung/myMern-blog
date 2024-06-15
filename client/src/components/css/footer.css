@@ -72,7 +72,7 @@ footer{
 
 
 /* ......Mobile Responsiveness..... */
-@media all and (max-width: 420px) {
+@media all and (max-width: 490px) {
   .footer-container{
     flex-direction: column;
   }
@@ -90,5 +90,14 @@ footer{
 
   div.col.first-col{
     margin-top: 0;
+  }
+}
+
+
+/* Tablet Responsiveness */
+@media all and (min-width: 490px) and (max-width: 920px){
+
+  .footer-container{
+    flex-direction: column;
   }
 }

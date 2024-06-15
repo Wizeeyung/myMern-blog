@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import { signOutSuccess } from '../redux/user/userSlice';
 import { GiMoon } from "react-icons/gi";
 import { toggleTheme } from '../redux/theme/themeSlice';
+import { CiMenuFries } from "react-icons/ci";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Header = () => {
 
@@ -17,8 +19,14 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location, searchTerm);
+  const [hamburgMenu, setHamburgMenu] = useState(false);
+  
   const dispatch = useDispatch();
+
+
+  const toggleMenu = () =>{
+    setHamburgMenu(!hamburgMenu);
+  }
 
   useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
@@ -65,17 +73,20 @@ const Header = () => {
   return (
     <header className='header-container'>
       <nav className='nav-bar'>
-        <Link to='/'><img src={logo} alt="logo" /></Link>
+        <Link to='/'><img src={logo} alt="logo" className='logo'/></Link>
         <form className='search-box' onSubmit={handleSubmit}>
             <input type='text' placeholder='search' onChange={(e)=> setSearchTerm(e.target.value)} value={searchTerm}/>
             <IoSearch className='search-icon'/>
         </form>
-        <ul className='nav-links'>
-          <li><NavLink to='/' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Home</NavLink></li>
-          <li><NavLink to='/about' className={(navData) => navData.isActive ? 'links actives' : 'links'}>About</NavLink></li>
-          <li><NavLink to='/projects' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Projects</NavLink></li>
+        
+        <ul className= { hamburgMenu ? 'nav-links' : 'nav-links nav-links-close'}>
+          <li onClick={toggleMenu}><NavLink to='/' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Home</NavLink></li>
+          <li onClick={toggleMenu}><NavLink to='/about' className={(navData) => navData.isActive ? 'links actives' : 'links'}>About</NavLink></li>
+          <li onClick={toggleMenu}><NavLink to='/projects' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Projects</NavLink></li>
+          <IoCloseCircleOutline onClick={toggleMenu}/>
         </ul>
         <div className='header-sign'>
+          <CiMenuFries onClick={toggleMenu} className='menu'/>
           {theme === 'light' ? 
           <GiMoon  className='light-icon' onClick={()=> dispatch(toggleTheme())}/> :
           <MdLightMode  className='light-icon' onClick={()=> dispatch(toggleTheme())}/>

@@ -82,3 +82,28 @@
 .home-postcard-container h2{
   text-align: center;
 }
+
+
+
+/* Mobile Responsiveness */
+@media all and (max-width: 490px){
+  .banner h1{
+    font-size: 25px;
+  }
+
+  .banner p{
+    font-size: 12px;
+    width: 300px;
+  }
+
+  .cta-banner{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+
+  
+
+}
+
+

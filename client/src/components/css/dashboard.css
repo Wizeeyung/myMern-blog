@@ -396,3 +396,35 @@ a button.profile-form-btn.create-post:hover{
   background-color: var(--green);
   color: white;
 }
+
+
+/* Mobile Responsiveness */
+@media all and (max-width: 490px){
+  .post-card{
+    width: 70vw;
+  }
+
+  .post-card-img{
+    width: 100%;
+  }
+
+  .post-card h3{
+    font-size: 12px;
+  }
+
+  /* .left-dashboard{
+    background-color:  transparent;
+  }
+
+  .dash-sidebar{
+    position: absolute;
+    width: 80%;
+    background-color: gray;
+    z-index: 1;
+  } */
+
+ 
+ 
+
+  
+}
