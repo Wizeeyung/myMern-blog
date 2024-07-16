@@ -412,6 +412,10 @@ a button.profile-form-btn.create-post:hover{
     font-size: 12px;
   }
 
+  .recent-post{
+    justify-content: space-between;
+  }
+
   /* .left-dashboard{
     background-color:  transparent;
   }

@@ -74,7 +74,6 @@ const PostPage = () => {
 
   
 
- 
   return (
     <div className="singlepost-container">
       {loading && <div className="post-loader"><ClipLoader type='TailSpin' height='50' width='50' color='red'/></div>}

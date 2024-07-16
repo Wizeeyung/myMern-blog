@@ -11,7 +11,7 @@ const CallToAction = () => {
       <span>Check out my projects by clicking on the button below</span>
       </div>
       {/* rel='noopener noreferrer'  attribute is added for security reasons to prevent a potential security vulnerability called "tabnabbing". */}
-      <button><Link to='https://github.com/Wizeeyung?tab=repositories' target='_blank' rel='noopener noreferrer'>My Projects</Link></button>
+      <button><Link to='https://samson-portfolio-jet.vercel.app/' target='_blank'>My Projects</Link></button>
     </div>
     <div className="cta-right">
       <img src={img} alt="blog-pic" />

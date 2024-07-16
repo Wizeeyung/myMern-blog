@@ -83,6 +83,10 @@
   text-align: center;
 }
 
+.mobile{
+  display: none;
+}
+
 
 
 /* Mobile Responsiveness */
@@ -102,7 +106,32 @@
     align-self: center;
   }
 
+  .home-container{
+    display: none;
+  }
+
+  .mobile{
+    display: block;
+    padding: 0 5%;
+    height: 20vh;
+  }
+
   
+
+}
+
+
+/* Tablet Responsiveness */
+@media all and (min-width: 490px) and (max-width: 920px){
+  .home-container{
+    display: none;
+  }
+  
+  .mobile{
+    display: block;
+    padding: 0 5%;
+    height: 38vh;
+  }
 
 }
 
