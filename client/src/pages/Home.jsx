@@ -21,12 +21,10 @@ const Home = () =>{
 
   }, [])
   return(
-    <>
-    <p className="mobile">Mobile/Tablet view still in progress... <br/> to view switch to a desktop/Laptop</p>
     <div className="home-container">
       <div className="banner">
-        <h1>Welcome to WIZZY&apos;S Blog</h1>
-        <p className="mobile">Here you&apos;ll find a variety of articles and tutorials on topics such as web development, software engineering, and programming languages.</p>
+        <h1>Welcome to WIZZY&apos;S Portfolio</h1>
+        <p>Here you&apos;ll find a variety of articles and tutorials on topics such as web development, software engineering, and programming languages.</p>
         <Link to='/search'>view all posts</Link>
       </div>
       <div className="cta-banner">
@@ -41,8 +39,10 @@ const Home = () =>{
         </div>
         <Link to='/search'>view all posts</Link>
       </div>
+      
+      
+      
     </div>
-    </>
   )
 }
 

@@ -138,3 +138,75 @@ form .form-div input{
 }
 
 
+
+
+/* Mobile Responsiveness */
+@media all and (max-width: 490px){
+  .signup-container{
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .left-signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    align-self: center;
+    margin-bottom: 25px;
+  }
+
+  .left-signup img{
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .left-signup p{
+    font-size: 12px;
+    text-align: center;
+    width: 300px;
+  }
+
+  .right-signup{
+    width: 80%;
+  }
+}
+
+
+/* Tablet Responsiveness */
+@media all and (min-width: 490px) and (max-width: 920px){
+  .signup-container{
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .left-signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    align-self: center;
+    margin-bottom: 25px;
+  }
+
+  .left-signup img{
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .left-signup p{
+    font-size: 14px;
+    text-align: center;
+    width: 300px;
+  }
+
+  .right-signup{
+    width: 70%;
+  }
+}
+
+

@@ -13,14 +13,15 @@ import { BiSolidDashboard } from "react-icons/bi";
 
 
 
-const DashSidebar = () => {
+
+const DashSidebar = ({handleShowDashboard}) => {
 
   const {theme} = useSelector((state) => state.theme)
   const location = useLocation();
   const [tab, setTab] = useState('');
   const dispatch = useDispatch();
   const {currentUser} = useSelector((state)=> state.user);
-
+  
 
   const handleSignOut = async () =>{
     try{
@@ -39,6 +40,8 @@ const DashSidebar = () => {
     }
   };
 
+  
+
 
   useEffect(()=>{
     const urlParams = new URLSearchParams(location.search)
@@ -52,35 +55,35 @@ const DashSidebar = () => {
     <div className='dash-sidebar'>
       <div className={tab === 'profile' ? 'profile active' : 'profile'}>
         <FaUser />
-        <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null}>Profile</Link></p>
+        <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Profile</Link></p>
         <span>{currentUser.isAdmin ? 'Admin' : 'User'}</span>
       </div>
       {
         currentUser.isAdmin &&
         <div className={tab === 'dash' ? 'profile active' : 'profile'}>
           <BiSolidDashboard />
-          <p><Link to='/dashboard?tab=dash' className={theme === 'light' ? 'darks' : null}>Dashboard</Link></p>
+          <p><Link to='/dashboard?tab=dash' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Dashboard</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'post' ? 'profile active' : 'profile'}>
           <CgFileDocument />
-          <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null}> Post</Link></p>
+          <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}> Post</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'user' ? 'profile active' : 'profile'}>
           <FaUsersLine />
-          <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null}>User</Link></p>
+          <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>User</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'comments' ? 'profile active' : 'profile'}>
           <MdOutlineInsertComment />
-          <p><Link to='/dashboard?tab=comments' className={theme === 'light' ? 'darks' : null}>Comments</Link></p>
+          <p><Link to='/dashboard?tab=comments' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Comments</Link></p>
         </div>
       }
       

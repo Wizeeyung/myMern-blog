@@ -92,3 +92,93 @@
 .sidebar-ct-right .show-btn{
   margin-bottom: 20px;
 }
+
+
+
+@media all and (max-width: 490px){
+  .search-container{
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .search-container .search-pane-container{
+    background-color: rgba(71, 69, 69, 0.9);
+    position: absolute;
+    border-radius: 5px;
+    padding: 8px 30px;
+    display: flex;
+    z-index: 10;
+  }
+
+  svg.search-pane{
+    font-size: 30px;
+    
+  }
+
+  svg.search-cancel{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  form.sidebar-form{
+    position: absolute;
+    width: 90%;
+    background-color: rgba(71, 69, 69, 0.9);
+    border: 0;
+    z-index: 10;
+    padding-left: 30px;
+    top: 0;
+  }
+
+  .sidebar-ct-right{
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+}
+
+
+/* Tablet Responsiveness */
+@media all and (min-width: 490px) and (max-width: 920px){
+  .search-container{
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .search-container .search-pane-container{
+    background-color: rgba(71, 69, 69, 0.9);
+    position: absolute;
+    border-radius: 5px;
+    padding: 8px 30px;
+    display: flex;
+    z-index: 10;
+  }
+
+  svg.search-pane{
+    font-size: 30px;
+    
+  }
+
+  svg.search-cancel{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  form.sidebar-form{
+    position: absolute;
+    width: 70%;
+    background-color: rgba(71, 69, 69, 0.9);
+    border: 0;
+    z-index: 10;
+    padding: 30px;
+  }
+
+  .sidebar-ct-right{
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}

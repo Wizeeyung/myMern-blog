@@ -91,6 +91,11 @@
 
 /* Mobile Responsiveness */
 @media all and (max-width: 490px){
+
+  .home-container{
+    overflow: hidden;
+  }
+
   .banner h1{
     font-size: 25px;
   }
@@ -106,9 +111,6 @@
     align-self: center;
   }
 
-  .home-container{
-    display: none;
-  }
 
   .mobile{
     display: block;
@@ -123,9 +125,6 @@
 
 /* Tablet Responsiveness */
 @media all and (min-width: 490px) and (max-width: 920px){
-  .home-container{
-    display: none;
-  }
   
   .mobile{
     display: block;

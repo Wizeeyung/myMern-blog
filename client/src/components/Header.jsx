@@ -83,10 +83,10 @@ const Header = () => {
           <li onClick={toggleMenu}><NavLink to='/' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Home</NavLink></li>
           <li onClick={toggleMenu}><NavLink to='/about' className={(navData) => navData.isActive ? 'links actives' : 'links'}>About</NavLink></li>
           <li onClick={toggleMenu}><NavLink to='/projects' className={(navData) => navData.isActive ? 'links actives' : 'links'}>Projects</NavLink></li>
-          {/* <IoCloseCircleOutline onClick={toggleMenu}/> */}
+          <IoCloseCircleOutline onClick={toggleMenu} className='close-header'/>
         </ul>
         <div className='header-sign'>
-          {/* <CiMenuFries onClick={toggleMenu} className='menu'/> */}
+          <CiMenuFries onClick={toggleMenu} className='menu'/>
           {theme === 'light' ? 
           <GiMoon  className='light-icon' onClick={()=> dispatch(toggleTheme())}/> :
           <MdLightMode  className='light-icon' onClick={()=> dispatch(toggleTheme())}/>

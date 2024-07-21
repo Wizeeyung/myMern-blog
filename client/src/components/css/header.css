@@ -209,24 +209,21 @@ svg.search-icon{
 /* Responsiveness for mobile */
 @media all and (max-width: 490px){
   ul.nav-links{
-    display: none;
     flex-direction: column;
-    background-color: gray;
+    background-color: rgba(71, 69, 69, 0.9);
     position: absolute;
     right: 0;
     top: 0;
-    height: 20vh;
-    width: 150px;
-    padding: 10px;
-    justify-content: space-between;
+    height: 40vh;
+    width: 80%;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     z-index: 1;
     transition: all 0.3s ease-in;
     
-  }
-
-  .header-sign{
-    display: none;
   }
 
   .nav-bar form{
@@ -270,6 +267,10 @@ svg.search-icon{
     margin-left: 10px;
   }
 
+  ul.nav-links svg.close-header{
+    font-size: 20px;
+  }
+
 
 }
 
@@ -278,25 +279,27 @@ svg.search-icon{
 /* Tablet Responsiveness */
 @media all and (min-width: 490px) and (max-width: 920px){
   ul.nav-links{
-    display: none;
     flex-direction: column;
-    background-color: gray;
+    background-color: rgba(71, 69, 69, 0.9);
     position: absolute;
     right: 0;
     top: 0;
-    height: 20vh;
-    width: 150px;
-    padding: 10px;
-    justify-content: space-between;
+    height: 40vh;
+    width: 80%;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     z-index: 1;
     transition: all 0.3s ease-in;
     
   }
 
-  .header-sign{
-    display: none;
+  ul.nav-links svg.close-header{
+    font-size: 30px;
   }
+
 
   .nav-bar form{
     display: none;

@@ -4,6 +4,8 @@ import '../components/css/search.css';
 import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
 import ClipLoader from "react-spinners/ClipLoader";
+import { MdScreenSearchDesktop } from "react-icons/md";
+import { GiCancel } from "react-icons/gi";
 
 const Search = () => {
 
@@ -22,6 +24,7 @@ const Search = () => {
   const location = useLocation();
   const {theme} = useSelector((state)=> state.theme);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false)
 
   useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
@@ -88,6 +91,10 @@ const Search = () => {
 
   };
 
+  const handleShowSearch = () =>{
+    setShow(!show)
+  }
+
   const handleSubmit = (e) =>{
     e.preventDefault();
     const urlParams = new URLSearchParams(location.search);
@@ -131,7 +138,11 @@ const Search = () => {
  
   return (
     <div className="search-container">
-      <form className="sidebar-form" onSubmit={handleSubmit}>
+      <div className="search-pane-container">
+        <MdScreenSearchDesktop className="search-pane" onClick={handleShowSearch}/>
+      </div>
+      {show && <form className="sidebar-form" onSubmit={handleSubmit}>
+        <GiCancel className="search-cancel" onClick={handleShowSearch}/>
         <div className="sidebar-ct">
           <label>Search Term:</label>
           <input placeholder="Search..." id="searchTerm" type="text" value={sidebarData.searchTerm} onChange={handleChange}/>
@@ -156,7 +167,7 @@ const Search = () => {
         </div>
 
         <button type="submit" onSubmit={handleSubmit}>Submit</button>
-      </form>
+      </form>}
 
       <div className="sidebar-ct-right">
         <h1>Post Results</h1>
