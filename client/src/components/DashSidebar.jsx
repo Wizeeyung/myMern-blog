@@ -51,39 +51,43 @@ const DashSidebar = ({handleShowDashboard}) => {
     }
   }, [location.search])
 
+  const isMobileOrTablet = () => {
+    return window.innerWidth >= 1024; // Adjust the breakpoint as needed
+  };
+
   return (
     <div className='dash-sidebar'>
       <div className={tab === 'profile' ? 'profile active' : 'profile'}>
         <FaUser />
-        <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Profile</Link></p>
+        <p ><Link to='/dashboard?tab=profile' className={theme === 'light' ? 'darks' : null} onClick={!isMobileOrTablet() && handleShowDashboard}>Profile</Link></p>
         <span>{currentUser.isAdmin ? 'Admin' : 'User'}</span>
       </div>
       {
         currentUser.isAdmin &&
         <div className={tab === 'dash' ? 'profile active' : 'profile'}>
           <BiSolidDashboard />
-          <p><Link to='/dashboard?tab=dash' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Dashboard</Link></p>
+          <p><Link to='/dashboard?tab=dash' className={theme === 'light' ? 'darks' : null} onClick={!isMobileOrTablet() && handleShowDashboard}>Dashboard</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'post' ? 'profile active' : 'profile'}>
           <CgFileDocument />
-          <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}> Post</Link></p>
+          <p><Link to='/dashboard?tab=post' className={theme === 'light' ? 'darks' : null} onClick={!isMobileOrTablet() && handleShowDashboard}> Post</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'user' ? 'profile active' : 'profile'}>
           <FaUsersLine />
-          <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>User</Link></p>
+          <p><Link to='/dashboard?tab=user' className={theme === 'light' ? 'darks' : null} onClick={!isMobileOrTablet() && handleShowDashboard}>User</Link></p>
         </div>
       }
       {
         currentUser.isAdmin &&
         <div className={tab === 'comments' ? 'profile active' : 'profile'}>
           <MdOutlineInsertComment />
-          <p><Link to='/dashboard?tab=comments' className={theme === 'light' ? 'darks' : null} onClick={handleShowDashboard}>Comments</Link></p>
+          <p><Link to='/dashboard?tab=comments' className={theme === 'light' ? 'darks' : null} onClick={!isMobileOrTablet() && handleShowDashboard}>Comments</Link></p>
         </div>
       }
       

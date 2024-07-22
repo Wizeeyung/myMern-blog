@@ -203,6 +203,15 @@ svg.search-icon{
 
 }
 
+svg.close-header{
+  display: none;
+}
+
+svg.menu{
+  display: none;
+}
+
+
 
 
 
@@ -263,11 +272,13 @@ svg.search-icon{
   }
 
   .header-sign svg.menu{
+    display: block;
     margin-right: 10px;
     margin-left: 10px;
   }
 
   ul.nav-links svg.close-header{
+    display: block;
     font-size: 20px;
   }
 
@@ -297,6 +308,7 @@ svg.search-icon{
   }
 
   ul.nav-links svg.close-header{
+    display: block;
     font-size: 30px;
   }
 
@@ -338,6 +350,7 @@ svg.search-icon{
   }
 
   .header-sign svg.menu{
+    display: block;
     margin-right: 10px;
   }
 }

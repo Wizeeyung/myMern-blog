@@ -340,6 +340,9 @@ a button.profile-form-btn.create-post:hover{
   text-align: center;
   margin-top: 0;
 }
+
+
+
 .post-card-img{
   width: 350px;
   height: 200px;
@@ -397,6 +400,19 @@ a button.profile-form-btn.create-post:hover{
   color: white;
 }
 
+svg.dash-icon{
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+svg.dash-cancel{
+  margin-bottom: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 
 /* Mobile Responsiveness */
 @media all and (max-width: 490px){
@@ -416,6 +432,8 @@ a button.profile-form-btn.create-post:hover{
     justify-content: space-between;
   }
 
+  
+
 }
 
 
@@ -444,6 +462,7 @@ a button.profile-form-btn.create-post:hover{
   }
 
  svg.dash-icon{
+  display: block;
   position: absolute;
   font-size: 30px;
   margin-top: 20px;
@@ -451,6 +470,7 @@ a button.profile-form-btn.create-post:hover{
  }
 
  svg.dash-cancel{
+  display: block;
     margin-bottom: 10px;
     z-index: 10;
   }
@@ -465,10 +485,6 @@ a button.profile-form-btn.create-post:hover{
 
 /* Tablet Responsiveness */
 @media all and (min-width: 490px) and (max-width: 920px){
- 
-
-  
-
   .post-card h3{
     font-size: 12px;
   }
@@ -498,6 +514,7 @@ a button.profile-form-btn.create-post:hover{
   }
 
  svg.dash-icon{
+  display: block;
   position: absolute;
   font-size: 30px;
   margin-top: 20px;
@@ -505,6 +522,7 @@ a button.profile-form-btn.create-post:hover{
  }
 
  svg.dash-cancel{
+  display: block;
     margin-bottom: 10px;
     z-index: 10;
   }

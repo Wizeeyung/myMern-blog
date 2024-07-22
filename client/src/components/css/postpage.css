@@ -392,12 +392,12 @@ p.update-error{
 
 .cancel-btn{
   align-self: center;
-  background-color: transparent;
-  color: black;
+  background-color: var(--grey);
+  color: white;
   font-weight: bold;
   font-size: 12px;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid var(--grey);
   padding: 8px 15px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -533,6 +533,10 @@ button.edit-btn:hover{
     overflow-x: auto; /* enable horizontal scrolling */
     
   }
+
+  .is-edit{
+    width: 100%;
+  }
 }
 
 
@@ -556,6 +560,10 @@ button.edit-btn:hover{
 
   .cta-left-content h1{
     font-size: 12px;
+  }
+
+  .is-edit{
+    width: 100%;
   }
 
   .cta-left-content span{

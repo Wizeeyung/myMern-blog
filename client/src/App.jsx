@@ -1,6 +1,7 @@
+import { Suspense, lazy } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
-import Home from './pages/Home'
+import Home from './pages/Home';
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Signin from './pages/Signin'
@@ -21,6 +22,7 @@ import Search from './pages/Search'
 function App() {
   return (
     <BrowserRouter>
+    <Suspense fallback={<div>Loading...</div>}>
       <ScrollToTop />
       <Header />
       <Routes>
@@ -42,7 +44,7 @@ function App() {
         
       </Routes>   
       <Footer />
-
+    </Suspense>
     </BrowserRouter>
     
   )
