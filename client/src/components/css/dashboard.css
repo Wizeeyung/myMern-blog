@@ -445,8 +445,13 @@ svg.dash-cancel{
 /* Mobile Responsiveness */
 @media all and (max-width: 490px){
 
+  .dashboard-container{
+    height: 80vh;
+  }
+  
   .dash-sidebar{
     position: relative;
+    z-index: 200;
   }
 
   .dash-profile .profile-form{
